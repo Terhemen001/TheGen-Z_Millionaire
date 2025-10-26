@@ -13,6 +13,13 @@
     :root{--accent:#2b6df6;--muted:#6b7280;--bg:#0f1724}
     *{box-sizing:border-box}
     body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:#0b1220; background:linear-gradient(180deg,#f8fafc 0%, #fff 100%)}
+    nav{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:50}
+    nav .nav-container{max-width:980px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+    .nav-logo{font-weight:700;font-size:18px;color:var(--accent);text-decoration:none}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{text-decoration:none;color:#111827;font-weight:500;font-size:15px;transition:color .2s}
+    .nav-links a:hover{color:var(--accent)}
+    .btn-nav{background:var(--accent);color:#fff;padding:8px 14px;border-radius:6px;border:0;font-weight:600;text-decoration:none}
     .container{max-width:980px;margin:36px auto;padding:20px}
     .hero{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
     .cover{flex:0 0 260px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.08);overflow:hidden}
@@ -22,7 +29,7 @@
     .eyebrow{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
     .sub{font-size:16px;color:#111827;margin-bottom:18px;line-height:1.5}
     .cta-row{display:flex;gap:12px;align-items:center}
-    .btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+    .btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:8px;border:0;cursor:pointer;font-weight:600;text-decoration:none}
     .btn.ghost{background:transparent;color:var(--accent);border:2px solid rgba(43,109,246,0.12)}
     .meta{font-size:14px;color:var(--muted);margin-top:10px}
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
@@ -35,26 +42,43 @@
     .testimonials{margin-top:28px}
     .testimonial{background:linear-gradient(180deg,#fff 0,#fafafa 100%);padding:14px;border-radius:10px;margin-bottom:12px;border-left:4px solid #e6eefc}
     footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--muted);font-size:14px}
-    @media (max-width:720px){.grid{grid-template-columns:1fr}.hero{flex-direction:column}.cover{width:220px;margin:0 auto}}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}.hero{flex-direction:column}.cover{width:220px;margin:0 auto}.nav-links{display:none}}
   </style>
 </head>
 <body>
+  <nav>
+    <div class="nav-container">
+      <a href="#top" class="nav-logo">The Gen‑Z Millionaire</a>
+      <div class="nav-links">
+        <a href="#buy">Buy</a>
+        <a href="#sample">Sample</a>
+        <a href="#author">Author</a>
+        <a href="#faq">FAQ</a>
+        <a href="#" class="btn-nav">Get PDF</a>
+      </div>
+    </div>
+  </nav>
   <div class="container">
-    <header class="hero">
+    <header class="hero" id="top">
       <div class="cover">
-        <img src="Beige Mock Up Design for Online Store Launch_20251004_234003_0000.png" alt="The Gen-Z Millionaire cover">
+        <img src="https://via.placeholder.com/520x720.png?text=The+Gen-Z+Millionaire+%7C+David+Spells" alt="The Gen-Z Millionaire cover">
       </div>
       <div class="hero-copy">
         <div class="eyebrow">New Release — PDF</div>
         <h1>The Gen‑Z Millionaire</h1>
         <div class="sub">A practical and direct roadmap for ambitious young people who want to earn, invest, and build freedom in the digital age. No fluff — just actionable steps, modern income paths, and the mindset to turn ideas into reliable income.</div>
         <div class="cta-row">
-          <a class="btn" href="https://emmanuelflare8385.gumroad.com/l/pewbw" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">Buy the PDF — $7.99</a>
-          <a class="btn ghost" href="#sample" onclick="document.getElementById('sample').scrollIntoView({behavior:'smooth'})">Read a free chapter</a>
+          <a class="btn" href="#buy">Buy the PDF — $7.99</a>
+          <a class="btn ghost" href="#sample">Read a free chapter</a>
         </div>
         <div class="meta">Format: PDF • Pages: 78 • Language: English • Author: David Spells</div>
       </div>
     </header>
+
+    <!-- Remaining content (unchanged) -->
+    <!-- ... previous sections go here (features, author, testimonials, buy, sample, faq, footer) ... -->
+
+    
 
     <main class="grid" style="margin-top:28px">
       <section class="card">
@@ -133,6 +157,38 @@
       <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">What format is the book?</summary><div style="margin-top:8px;color:var(--muted)">PDF (downloadable). Kindle and audiobook versions coming soon.</div></details>
       <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">How will I receive the book?</summary><div style="margin-top:8px;color:var(--muted)">You’ll receive a download link immediately after purchase via the checkout platform.</div></details>
       <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">Do you offer affiliate commissions?</summary><div style="margin-top:8px;color:var(--muted)">Yes — email <a href="mailto:affiliates@davspells.example" style="color:var(--accent);text-decoration:none">affiliates@davspells.example</a> to apply for an affiliate link.</div></details>
+    
+
+    <footer>
+      © <span id="year"></span> David Spells • All rights reserved • Built for global Gen‑Z readers
+    </footer>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+<p style="color:var(--muted);margin:0">(Full PDF contains worksheets, templates, and a 30‑day launch checklist.)</p>
+    </section>
+
+    <section class="card" style="margin-top:22px">
+      <h3 style="margin-top:0">FAQ</h3>
+      <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">What format is the book?</summary><div style="margin-top:8px;color:var(--muted)">PDF (downloadable). Kindle and audiobook versions coming soon.</div></details>
+      <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">How will I receive the book?</summary><div style="margin-top:8px;color:var(--muted)">You’ll receive a download link immediately after purchase via the checkout platform.</div></details>
+      <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">Do you offer affiliate commissions?</summary><div style="margin-top:8px;color:var(--muted)">Yes — email <a href="mailto:affiliates@davspells.example" style="color:var(--accent);text-decoration:none">affiliates@davspells.example</a> to apply for an affiliate link.</div></details>
+    </section>
+
+    <footer>
+      © <span id="year"></span> David Spells • All rights reserved • Built for global Gen‑Z readers
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+        </html>
+          <details style="margin:8px 0"><summary style="cursor:pointer;font-weight:600">Do you offer affiliate commissions?</summary><div style="margin-top:8px;color:var(--muted)">Yes — email <a href="mailto:affiliates@davspells.example" style="color:var(--accent);text-decoration:none">affiliates@davspells.example</a> to apply for an affiliate link.</div></details>
     </section>
 
     <footer>
